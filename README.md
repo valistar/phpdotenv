@@ -1,14 +1,11 @@
 PHP dotenv
 ==========
 
-Loads environment variables from `.env` to `getenv()`, `$_ENV` and
+Loads environment variables from `.env` to `$_ENV` and
 `$_SERVER` automagically.
 
 This is a PHP version of the original [Ruby
 dotenv](https://github.com/bkeepers/dotenv).
-
-[![Build
-Status](https://secure.travis-ci.org/vlucas/phpdotenv.png)](http://travis-ci.org/vlucas/phpdotenv)
 
 Why .env?
 ---------
@@ -39,7 +36,7 @@ Installation with Composer
 
 ```shell
 curl -s http://getcomposer.org/installer | php
-php composer.phar require vlucas/phpdotenv
+php composer.phar require valistar/phpdotenv
 ```
 
 Usage
@@ -82,10 +79,8 @@ You can then load `.env` in your application with a single line:
 Dotenv::load(__DIR__);
 ```
 
-All of the defined variables are now accessible with the `getenv`
-method, and are available in the `$_ENV` and `$_SERVER` super-globals.
+All of the defined variables are now available in the `$_ENV` and `$_SERVER` super-globals.
 ```php
-$s3_bucket = getenv('S3_BUCKET');
 $s3_bucket = $_ENV['S3_BUCKET'];
 $s3_bucket = $_SERVER['S3_BUCKET'];
 ```
@@ -94,7 +89,6 @@ You should also be able to access them using your framework's Request
 class (if you are using a framework).
 ```php
 $s3_bucket = $request->env('S3_BUCKET');
-$s3_bucket = $request->getEnv('S3_BUCKET');
 $s3_bucket = $request->server->get('S3_BUCKET');
 ```
 

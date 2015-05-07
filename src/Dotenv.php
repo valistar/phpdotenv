@@ -53,7 +53,6 @@ class Dotenv
 
     /**
      * Set a variable using:
-     * - putenv
      * - $_ENV
      * - $_SERVER
      *
@@ -72,7 +71,6 @@ class Dotenv
             return;
         }
 
-        putenv("$name=$value");
         $_ENV[$name] = $value;
         $_SERVER[$name] = $value;
     }
@@ -237,9 +235,9 @@ class Dotenv
             case array_key_exists($name, $_SERVER):
                 return $_SERVER[$name];
             default:
-                $value = getenv($name);
+                $value = false;
 
-                return $value === false ? null : $value; // switch getenv default to null
+                return $value === false ? null : $value;
         }
     }
 
